@@ -1,3 +1,6 @@
+<?php
+    include 'conect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +15,7 @@
     <!-- NAVBAR -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html" style="color:#fff;"><h2>Airline Ticket</h2></a>
+        <a class="navbar-brand" href="index.html" style="color:#fff;"><h2>Airline Ticketing</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#list" aria-controls="list" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,80 +38,79 @@
 <!-- INDEX CONTENT -->
 <div class="container-fluid">
     <div class="row align-items-center p-4"style="background: url('./img/air4.jpg') no-repeat center center/cover; height: 600px;" >
-        <div class="col-md-12 text-center" style="background: #fff; opacity:0.8; border: #444 solid 1px; border-radius: 10px;">
+        <div class="col-md-6 offset-md-3 p-2 text-center" style="background: #fff; opacity:0.8; border: #444 solid 1px; border-radius: 10px;">
             <h1 style="color: black;"><span style="color: #444;">Register</span> With Us</h1><br>
-            <p>Please fill out the form below to register</p>
-            <form action="">
+            <?php
+                if(isset($_POST["submit"])){
+                    $fname=$_POST["fname"];
+                    $lname=$_POST["lname"];
+                    $uname=$_POST["uname"];
+                    $pass=$_POST["pass"];
+                    $email=$_POST["email"];
+                    $num=$_POST["num"];
+                    $passportnum=$_POST["passportnum"];
+                    $homenum=$_POST["homenum"];
+                    $sname=$_POST["sname"];
+                    $city=$_POST["city"];
+
+                    $sql="INSERT INTO users(firstname,lastname,username,password,email,phone,passport,home_phone,streetname,city)
+                            VALUE ('{$fname}','{$lname}','{$uname}','{$pass}','{$email}','{$num}','{$passportnum}','{$homenum}','{$sname}','$city')";
+                            if($db->query($sql)){
+                                echo "<p style='color:green;'>Registration successful</p>";
+                            }else{
+                                echo "<p style='color:red;'>Registration failed</p>";
+                            }
+
+                }
+            ?>
+            <h5>Please fill out the form below to register</h5>
+            <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST">
                 
                     <div class="row">
                         <div class="col-md-6 mb-3 form-group">
                             <input class="form-control" type="text"  name="fname"  placeholder="First Name" required>
                         </div>
                         <div class="col-md-6 mb-3  form-group">
-                            <input class="form-control" type="text"  name="lname"  placeholder="Email Address" required>
+                            <input class="form-control" type="text"  name="lname"  placeholder="Last Name" required>
                         </div>
                     </div>
                 
                     <div class="row">
                         <div class="col-md-6 mb-3 form-group">
-                            <input class="form-control" type="email"  name="email"  placeholder="Last Name" required>
+                            <input class="form-control" type="text"  name="uname"  placeholder="User Name" required>
                         </div>
                         <div class="col-md-6 mb-3  form-group">
-                            <input class="form-control" type="text"  name="username"  placeholder="Phone Number" required>
+                            <input class="form-control" type="password"  name="pass"  placeholder="Password" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3 form-group">
-                            <input class="form-control" type="email"  name="email"  placeholder="User Name" required>
+                            <input class="form-control" type="email"  name="email"  placeholder="Email Address" required>
                         </div>
                         <div class="col-md-6 mb-3  form-group">
-                            <input class="form-control" type="text"  name="username"  placeholder="Passport Number" required>
+                            <input class="form-control" type="number"  name="num"  placeholder="Phone Number" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3 form-group">
-                            <input class="form-control" type="email"  name="email"  placeholder="Password" required>
+                            <input class="form-control" type="text"  name="passportnum"  placeholder="Passport Number" required>
                         </div>
                         <div class="col-md-6 mb-3  form-group">
-                            <input class="form-control" type="text"  name="username"  placeholder="Home Number" required>
+                            <input class="form-control" type="number"  name="homenum"  placeholder="Home Number" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3 form-group">
-                            <input class="form-control" type="email"  name="email"  placeholder="Confirm Password" required>
+                            <input class="form-control" type="text"  name="sname"  placeholder="Street Name" required>
                         </div>
                         <div class="col-md-6 mb-3  form-group">
-                            <input class="form-control" type="text"  name="username"  placeholder="Street Name" required>
+                            <input class="form-control" type="text"  name="city"  placeholder="City" required>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-3 text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender">
-                                <label class="form-check-label">
-                                Male
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gender">
-                                <label class="form-check-label">
-                                Female
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-3  form-group">
-                            <input class="form-control" type="text"  name="username"  placeholder="City" required>
-                        </div>
+                    
+                    <div class="col-md-12 mb-3 text-center">
+                        <button class="btn" style="background-color: #444; color: #fff;" type="submit" name="submit">Register</button>
                     </div>
-                
-                    <div class="col-md-6 mb-3 form-group">
-                        <input class="form-control" type="number"  name="password"  placeholder="Age" required>
-                    </div>
-                <div class="col-md-12 mb-3 text-center">
-                    <button class="btn" style="background-color: #444; color: #fff;">Register</button>
-                </div>
             </form>
         </div>
     </div>

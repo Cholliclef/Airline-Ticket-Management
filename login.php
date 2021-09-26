@@ -17,7 +17,7 @@
     <!-- NAVBAR -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html" style="color:#fff;"><h2>Airline Ticket</h2></a>
+        <a class="navbar-brand" href="index.html" style="color:#fff;"><h2>Airline Ticketing</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#list" aria-controls="list" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,7 +40,7 @@
 <!-- INDEX CONTENT -->
 <div class="container-fluid">
     <div class="row align-items-center"style="background: url('./img/air4.jpg') no-repeat center center/cover; height: 550px;" >
-    <div class="col-md-4 offset-md-4 pt-3" style="background: #fff; width:; opacity:0.8; border: #444 solid 1px; border-radius: 10px;">
+    <div class="col-md-4 offset-md-4 pt-3" style="background: #fff; opacity:0.8; border: #444 solid 1px; border-radius: 10px;">
         <h1 class="text-center" style="color: black;"><span style="color: #444;">Sign </span>In</h1><br>
         <?php
             if(isset($_POST["submit"]))

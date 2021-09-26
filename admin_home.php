@@ -1,3 +1,10 @@
+<?php
+  include "conect.php";
+  session_start();
+  if(!isset($_SESSION["a_id"])){
+    echo "<script>window.open('admin_login.php','_self')</script>";
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +24,7 @@
         <h4><b>Airline Ticketing Dashboard</b></h4>
       </div>
 	  	<div class="col-md- float-right text-white">
-	  		<a href="#" class="text-white"> Logout</a>
+	  		<a href="logout.php" class="text-white"><?php echo $_SESSION['username'];?> Logout</a>
 	    </div>
     </div>
   </div> 

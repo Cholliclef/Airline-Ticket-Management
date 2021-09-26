@@ -1,3 +1,6 @@
+<?php
+    include 'conect.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +15,7 @@
     <!-- NAVBAR -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html" style="color:#fff;"><h2>Airline Ticket</h2></a>
+        <a class="navbar-brand" href="index.html" style="color:#fff;"><h2>Airline Ticketing</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#list" aria-controls="list" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -36,8 +39,25 @@
 <div class="container-fluid">
     <div class="row align-items-center p-4"style="background: url('./img/air4.jpg') no-repeat center center/cover; height: 600px;" >
         <div class="col-md-6 offset-md-3 p-4 text-center" style="background: #fff; opacity:0.8; border: #444 solid 1px; border-radius: 10px;">
-            <form action="">
-            <h1 style="color: black;"><span style="color: #444;">Make Your</span> Enquiry With Us</h1><br>
+        <h1 style="color: black;"><span style="color: #444;">Make Your</span> Enquiry With Us</h1><br>
+        <?php
+            if(isset($_POST["submit"]))
+            {
+                $fname=$_POST["fname"];
+                $lname=$_POST["lname"];
+                $email=$_POST["email"];
+                $message=$_POST["message"];
+
+                $sql="INSERT INTO messages(firstname,lastname,email,message)
+                        VALUES ('{$fname}','{$lname}','{$email}','{$message}')";
+                        if($db->query($sql)){
+                            echo "<p style='color:green;'>Message sent</p>";
+                        }else{
+                            echo "<p style='color:red;'>Message not sent</p>";
+                        }
+            }
+        ?>
+            <form action="<?php echo $_SERVER["PHP_SELF"]?>" method="POST">
                     <div class="row">
                         <div class="col-md-6 mb-3 form-group">
                             <input class="form-control" type="text"  name="fname"  placeholder="First Name" required>
@@ -58,7 +78,7 @@
                         </div>
                     </div>
                 <div class="col-md-3">
-                    <button class="btn" style="background-color: #444; color: #fff;">Send Message</button>
+                    <button class="btn" style="background-color: #444; color: #fff;" type="submit" name="submit">Send Message</button>
                 </div>
             </form>
         </div>

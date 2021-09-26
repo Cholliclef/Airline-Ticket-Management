@@ -1,3 +1,8 @@
+<?php
+	include "conect.php";
+	session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +17,7 @@
     <!-- NAVBAR -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html" style="color:#fff;"><h2>Airline Ticket</h2></a>
+        <a class="navbar-brand" href="index.html" style="color:#fff;"><h2>Airline Ticketing</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#list" aria-controls="list" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,7 +42,25 @@
     <div class="row align-items-center"style="background: url('./img/air4.jpg') no-repeat center center/cover; height: 550px;" >
     <div class="col-md-4 offset-md-4 pt-3" style="background: #fff; opacity:0.8; border: #444 solid 1px; border-radius: 10px;">
         <h1 class="text-center" style="color: black;"><span style="color: #444;">Admin </span>Log In</h1><br>
-        <form action="">
+        <?php
+            if(isset($_POST["submit"]))
+                {
+                    $sql="SELECT * FROM admin WHERE username='{$_POST["username"]}' AND password='{$_POST["password"]}'";
+                    $res=$db->query($sql);
+                    if($res->num_rows>0)
+                    {
+                        $row=$res->fetch_assoc(); 
+                        $_SESSION["a_id"]=$row["a_id"];
+                        $_SESSION["username"]=$row["username"];
+                        echo "<script>window.open('admin_home.php','_self')</script>";
+                    }
+                    else
+                    {
+                        echo"<p class='error'>Invalid User name or Password</p>";
+                    }
+                }
+        ?>
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
             <div class="col-md-6 offset-md-3 mb-3 form-group">
                 <input class="form-control" type="text"  name="username"  placeholder="Username" required style="border-color: #444;" >
             </div>
@@ -45,7 +68,7 @@
             <input class="form-control" type="password"  name="password"  placeholder="password" required style="border-color: #444;" >
             </div>
             <div class="col-md-6 offset-md-3 mb-3 ">
-                <button class="btn form-control" style="background-color: #444; color: #fff;">Log In</button>
+                <button type="submit" name="submit" class="btn form-control" style="background-color: #444; color: #fff;">Log In</button>
             </div>
         </form>
     </div>

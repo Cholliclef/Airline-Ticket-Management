@@ -1,3 +1,11 @@
+<?php
+	include "conect.php";
+	session_start();
+if(!isset($_SESSION["u_id"]))
+{
+	echo "<script>window.open('login.php','_self')</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +22,10 @@
   <div class="container-fluid mt-2 mb-2">
   	<div class="col-lg-12">
       <div class="col-md-4 float-left text-white">
-        <large><b>Airline Ticketing Dashboard</b></large>
+        <h4><b>Airline Ticketing Dashboard</b></h4>
       </div>
 	  	<div class="col-md- float-right text-white">
-	  		<a href="logout.php" class="text-white">Logout</a>
+        <h5>	  		<a href="logout.php" class="text-white" ><b><?php echo $_SESSION["username"];?> Logout</b></a></h5>
 	    </div>
     </div>
   </div> 
