@@ -56,7 +56,7 @@
                     }
                     else
                     {
-                        echo"<p class='error'>Invalid User name or Password</p>";
+                        echo"<p class='text-center' style='color:red;'>Invalid Username or Password</p>";
                     }
                 }
         ?>

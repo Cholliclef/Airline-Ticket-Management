@@ -34,42 +34,33 @@
 <div id="sidebar">
     <a href="admin_home.php" class="bar-item">Home</a>
     <a href="booked.php" class="bar-item">Booked</a>
-    <a href="flight.php" class="bar-item active">Flights</a>
-    <a href="airport.php" class="bar-item">Airport</a>
+    <a href="flight.php" class="bar-item">Flights</a>
+    <a href="airport.php" class="bar-item active">Airport</a>
   </div>
   <!-- SIDE CONTENT -->
   <div class="card">
       <div class="card-body">
           <div class="card-header">
-              <h5 class="card-title"><b>Flight List</b></h5>
+              <h5 class="card-title"><b>Airport List</b></h5>
           </div>
           <div class="card-body">
               <table class="table table-bordered">
                   <colgroup>
                     <col width="10%">
+                    <col width="30%">
                     <col width="40%">
                     <col width="20%">
-                    <col width="20%">
-                    <col width="20%">
-                    <col width="20%">
-                    <col width="30%">
                   </colgroup>
                   <thead>
                       <tr>
-                          <th class="text-center">Date</th>
-                          <th class="text-center">Information</th>
-                          <th class="text-center">Seats</th>
-                          <th class="text-center">Booked</th>
-                          <th class="text-center">Available</th>
-                          <th class="text-center">Price</th>
+                          <th class="text-center">#</th>
+                          <th class="text-center">Airport</th>
+                          <th class="text-center">Location</th>
                           <th class="text-center">Action</th>
                       </tr>
                   </thead>
                   <tbody>
                       <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
                           <td></td>
                           <td></td>
                           <td></td>

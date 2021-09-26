@@ -31,6 +31,12 @@ a.bar-item:hover, .bar-item.active {
     color: #fffafa;
     text-decoration: none;
 }
+/* #side-content{
+    background: chartreuse;
+    float: right;
+    width: 500px;
+    height:558px;
+} */
 #footer{
     clear:both;
     width:100%

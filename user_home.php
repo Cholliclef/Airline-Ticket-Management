@@ -18,6 +18,7 @@ if(!isset($_SESSION["u_id"]))
     <title>Document</title>
 </head>
 <body>
+  <!-- NAVBAR -->
 <nav class="navbar navbar-dark bg-dark" style="padding:0; height:60px;">
   <div class="container-fluid mt-2 mb-2">
   	<div class="col-lg-12">
@@ -25,11 +26,12 @@ if(!isset($_SESSION["u_id"]))
         <h4><b>Airline Ticketing Dashboard</b></h4>
       </div>
 	  	<div class="col-md- float-right text-white">
-        <h5>	  		<a href="logout.php" class="text-white" ><b><?php echo $_SESSION["username"];?> Logout</b></a></h5>
+        <h5><a href="logout.php" class="text-white" ><b><?php echo $_SESSION["username"];?> Logout</b></a></h5>
 	    </div>
     </div>
   </div> 
 </nav>
+<!-- SIDEBAR -->
 <div id="sidebar">
     <a href="#" class="bar-item home">Home</a>
     <a href="#" class="bar-item">Home</a>

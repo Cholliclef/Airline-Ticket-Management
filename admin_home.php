@@ -14,9 +14,10 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Document</title>
+    <title>Admin | Airline Tickecting</title>
 </head>
 <body>
+  <!-- NAVBAR -->
 <nav class="navbar navbar-dark bg-dark" style="padding:0; height:60px;">
   <div class="container-fluid mt-2 mb-2">
   	<div class="col-lg-12">
@@ -24,17 +25,23 @@
         <h4><b>Airline Ticketing Dashboard</b></h4>
       </div>
 	  	<div class="col-md- float-right text-white">
-	  		<a href="logout.php" class="text-white"><?php echo $_SESSION['username'];?> Logout</a>
+	  		<b><a href="logout.php" class="text-white"><?php echo $_SESSION['username'];?> Logout</a></b>
 	    </div>
     </div>
   </div> 
 </nav>
+<!-- SIDEBAR -->
 <div id="sidebar">
-    <a href="#" class="bar-item home">Home</a>
-    <a href="#" class="bar-item">Home</a>
-    <a href="#" class="bar-item">Home</a>
-    <a href="#" class="bar-item">Home</a>
+    <a href="admin_home.php" class="bar-item active">Home</a>
+    <a href="booked.php" class="bar-item">Booked</a>
+    <a href="flight.php" class="bar-item">Flights</a>
+    <a href="airport.php" class="bar-item">Airport</a>
   </div>
+  <!-- SIDE CONTENT -->
+  <!-- <div class=" m-4" id="side-content" style="background:lightgrey; width:1050px; height:500px;"> -->
+    <h5 class="text-center p-2"><b>Welcome back <?php echo $_SESSION["username"]?>!</b></h5>
+    <hr>
+  <!-- </div> -->
 <!-- FOOTER -->
 <div class="container-fluid" id="footer">
     <div class="row p-3 bg-dark">
